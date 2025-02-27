@@ -20,8 +20,8 @@ public class DoctorService {
     public List<Doctor> getAllDoctors() {
         return repository.findAll();
     }
-    public Optional<Doctor> findByName(String name) {
-        return repository.findByName();
+    public Optional<Doctor> getDoctorByName(String name) {
+        return repository.findByName(name);
     }
 
     public Doctor addDoctor(Doctor doctor) {
@@ -29,7 +29,7 @@ public class DoctorService {
     }
 
     public Doctor updateDoctor(String name, Doctor doctorDetails) {
-        return repository.findByName().map(doctor -> {
+        return repository.findByName(name).map(doctor -> {
             doctor.setSpecialty(doctorDetails.getSpecialty());
             doctor.setRank(doctorDetails.getRank());
             doctor.setFee(doctorDetails.getFee());

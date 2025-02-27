@@ -29,7 +29,7 @@ public class DoctorController {
 
     @GetMapping("/{name}")
     public Optional<Doctor> getDoctorByName(@PathVariable String name) {
-        return service.findByName(name);
+        return service.getDoctorByName(name);
     }
 
     @PutMapping("/{name}")
