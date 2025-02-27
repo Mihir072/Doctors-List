@@ -2,10 +2,10 @@ package com.mihir.doctorlist.controller;
 
 import com.mihir.doctorlist.entity.Doctor;
 import com.mihir.doctorlist.service.DoctorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/doctors")
@@ -25,6 +25,11 @@ public class DoctorController {
     @PostMapping
     public Doctor createDoctor(@RequestBody Doctor doctor) {
         return service.addDoctor(doctor);
+    }
+
+    @GetMapping("/{name}")
+    public Optional<Doctor> getDoctorByName(@PathVariable String name) {
+        return service.findByName(name);
     }
 
     @PutMapping("/{name}")

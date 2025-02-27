@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public
 interface DoctorRepository extends MongoRepository<Doctor, Long> {
-    Optional<Doctor> findByName(String name);
+    Optional<Doctor> findByName();
     void deleteByName(String name);
 
 }
