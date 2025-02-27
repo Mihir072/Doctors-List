@@ -30,11 +30,13 @@ public class DoctorService {
 
     public Doctor updateDoctor(String name, Doctor doctorDetails) {
         return repository.findByName(name).map(doctor -> {
+            doctor.setName(doctorDetails.getName());
             doctor.setSpecialty(doctorDetails.getSpecialty());
             doctor.setRank(doctorDetails.getRank());
             doctor.setFee(doctorDetails.getFee());
             doctor.setDescription(doctorDetails.getDescription());
             doctor.setNumber(doctorDetails.getNumber());
+            doctor.setImageUrl(doctorDetails.getImageUrl());
             return repository.save(doctor);
         }).orElseThrow(() -> new RuntimeException("Doctor not found"));
     }
